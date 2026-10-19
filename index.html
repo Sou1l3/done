@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="loading d-none" id="mr_spinner">
+      <span class="loader"></span>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" onclick="unhideform()" href="#adding">add product</a>
+        <a class="nav-link" href="#products">products</a>
+        <a class="nav-link" href="#searchbar">search for a product<a>
+      </div>
+    </div>
+  </div>
+</nav>
+    <section class="py-5 d-none" id="adding" id="mrform">
+      <div class="container">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2 class="card-title mb-3">Your product</h2>
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control mb-2"
+                required
+                id="productnameid"
+                placeholder="product name"
+              />
+              <div id="errorfaltname" class="alert alert-danger d-none">
+                you can't leave the name empty
+              </div>
+              <input
+                type="number"
+                class="form-control mb-2"
+                placeholder="product price"
+                id="productpriceid"
+                inputmode="numeric"
+                min=".1"
+                required
+              />
+              <div id="errorfaltprice" class="alert alert-danger d-none">
+                you must put a postive price
+              </div>
+              <div class="mb-3">
+                <label for="" class="form-label"></label>
+                <textarea
+                  class="form-control"
+                  name=""
+                  id="description"
+                  rows="3"
+                  placeholder="description"
+                  required
+                ></textarea>
+                <div
+                  id="errorfaltdescription"
+                  class="alert alert-danger d-none"
+                >
+                  you must put a description
+                </div>
+              </div>
+              <button
+                type="button"
+                onclick="addar()"
+                id="submitguy"
+                class="btn btn-primary"
+              >
+                add item
+              </button>
+              <button type="button" id="edit" class="btn btn-secondary d-none">
+                edit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <nav class="navbar bg-body-tertiary" id="searchbar">
+        <div class="container-fluid">
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              oninput="serching()"
+              id="searchinput"
+            />
+
+          </form>
+        </div>
+      </nav>
+      <div class="container" id="products">
+        <div
+          id="cards-container"
+          class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"
+        ></div>
+      </div>
+    </section>
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg" style="border-radius: 16px;">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-bold text-primary" id="modalTitle"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img id="modalImg" src="/product.webp" class="img-fluid rounded mb-3 w-100" style="height: 220px; object-fit: cover;" alt="Product">
+        <h4 id="modalPrice" class="text-success fw-bold mb-2"></h4>
+        <p id="modalDesc" class="text-muted"></p>
+      </div>
+      <div class="modal-footer border-0 pt-0">
+        <button type="button" class="btn btn-secondary btn-sm px-4" data-bs-dismiss="modal">close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
